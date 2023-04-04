@@ -31,8 +31,6 @@ JUMPING_SHIELD = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpShield.pn
 JUMPING_HAMMER = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpHammer.png"))
 JUMPING_S = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpSuperman1.0.png"))
 JUMPING_1 = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpFase1.png"))
-JUMPING_2 = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpFase2.png"))
-JUMPING_3 = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpFase3.png"))
 JUMPING_D = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpFaseD.png"))
 
 DUCKING = [

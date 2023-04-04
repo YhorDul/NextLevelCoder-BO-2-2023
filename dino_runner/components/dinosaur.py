@@ -1,5 +1,5 @@
 from pygame.sprite import Sprite
-from dino_runner.utils.constants import JUMPING, RUNNING, DUCKING, JUMPING_S, JUMPING_1, JUMPING_2, JUMPING_3, JUMPING_D, DUCKING_N
+from dino_runner.utils.constants import  RUNNING, JUMPING_S, DUCKING_N
 import pygame
 
 class Dinosaur(Sprite):
