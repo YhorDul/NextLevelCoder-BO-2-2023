@@ -1,6 +1,6 @@
 from pygame.sprite import Sprite
-from dino_runner.utils.constants import  RUNNING, JUMPING_S, DUCKING_N
-import pygame
+from dino_runner.utils.constants import  RUNNING, JUMPING_D, DUCKING_N
+import pygame 
 
 class Dinosaur(Sprite):
     POS_X = 40
@@ -27,6 +27,8 @@ class Dinosaur(Sprite):
         self.step_index += 1
 
     def duck(self):
+        pygame.mixer.music.load("dino_runner/assets/music/agacharse.mp3")
+        pygame.mixer.music.play()
         self.image = DUCKING_N[0] if self.step_index < 5 else DUCKING_N[1]
         self.rect = self.image.get_rect()
         self.rect.x = self.POS_X
@@ -34,7 +36,9 @@ class Dinosaur(Sprite):
         self.step_index += 1
 
     def jump(self):
-        self.image = JUMPING_S
+        pygame.mixer.music.load("dino_runner/assets/music/SaltoMario.mp3")
+        pygame.mixer.music.play()
+        self.image = JUMPING_D
         if self.jumping:
             self.rect.y -= self.jump_vel * 4          
             self.jump_vel -=  0.8       
