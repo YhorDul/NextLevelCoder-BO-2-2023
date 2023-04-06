@@ -1,7 +1,7 @@
 import pygame
 from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
 from dino_runner.components.powerups.power_up_manager import PowerUpManager
-from dino_runner.utils.constants import BG, CLOUD_D, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, CLOUD, COLORS, RUNNING, DRAGON_MENU
+from dino_runner.utils.constants import BG, CLOUD_D, ESFERA_1, ESFERA_2, ESFERA_3, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, CLOUD, COLORS, RUNNING, DRAGON_MENU, FONT_STYLE
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.text_util import TextUtils
 import random
@@ -28,6 +28,11 @@ class Game:
         self.points = 0
         self.game_running = True
         self.death_count = 0
+        self.y_pos_esfera = 500
+        self.x_pos_esfera1 = 10
+        self.x_pos_esfera2 = 60
+        self.x_pos_esfera3 = 110
+        self.life = 3
         self.powerup_manager = PowerUpManager()
         pygame.mixer.music.load("dino_runner/assets/music/Menuporta.mp3")
         pygame.mixer.music.play(-1)
@@ -43,6 +48,9 @@ class Game:
 
     def run(self):
         # Game loop: events - update - draw
+        pygame.mixer.music.load("dino_runner/assets/music/Menuporta.mp3")
+        pygame.mixer.music.play(-1)
+        pygame.mixer.music.set_volume(0.5)
         self.powerup_manager.reset_power_ups(self.points)
         self.playing = True
         while self.playing:
@@ -65,7 +73,6 @@ class Game:
     def draw(self):
         self.clock.tick(FPS)
         self.color_screen()
-        #self.screen.fill((255, 255, 255))
         self.draw_background()
         self.player.draw(self.screen)
         self.obstacle_manager.draw(self.screen)
@@ -97,9 +104,32 @@ class Game:
             self.x_pos_cloud_d = image_width
         self.x_pos_cloud_d -= self.game_speed
 
+        if self.get_life_number() >= 1:
+            esfer_1 = ESFERA_1.get_width()
+            self.screen.blit(ESFERA_1, (esfer_1 + self.x_pos_esfera1, self.y_pos_esfera))
+            if self.x_pos_esfera1 <= -image_width:
+                self.screen.blit(ESFERA_1, (esfer_1 + self.x_pos_esfera1, self.y_pos_esfera))
+                self.x_pos_esfera1 = image_width
+        
+        if self.get_life_number() >= 2:
+            esfer_2 = ESFERA_2.get_width()
+            self.screen.blit(ESFERA_2, (esfer_2 + self.x_pos_esfera2, self.y_pos_esfera))
+            if self.x_pos_esfera2 <= -image_width:
+                self.screen.blit(ESFERA_2, (esfer_2 + self.x_pos_esfera2, self.y_pos_esfera))
+                self.x_pos_esfera2 = image_width
+        
+        if self.get_life_number() >= 3:
+            esfer_3 = ESFERA_3.get_width()
+            self.screen.blit(ESFERA_3, (esfer_3 + self.x_pos_esfera3, self.y_pos_esfera))
+            if self.x_pos_esfera3 <= -image_width:
+                self.screen.blit(ESFERA_3, (esfer_3 + self.x_pos_esfera3, self.y_pos_esfera))
+                self.x_pos_esfera3 = image_width
+
     def score(self):
         self.points += 1
         text, text_rect = self.text_utils.get_score_element(self.points)
+        self.screen.blit(text, text_rect)
+        text, text_rect = self.text_utils.get_life(self.get_life_number())
         self.screen.blit(text, text_rect)
         active_powers, time_powerup = self.player.check_invincibility(self.screen)
         if active_powers:
@@ -108,7 +138,7 @@ class Game:
 
     def show_menu(self):
         self.game_running = True
-        self.screen.fill(COLORS['White'])
+        self.screen.fill(COLORS['Yellow'])
         self.print_menu_elements()
         
         pygame.display.update()
@@ -117,20 +147,19 @@ class Game:
     def print_menu_elements(self):
         half_screen_height = SCREEN_HEIGHT //2
         half_screen_width = SCREEN_WIDTH //2
+        self.screen.blit(DRAGON_MENU[0], (0, 0))
 
         if self.death_count == 0:
             text, text_rect = self.text_utils.get_centered_message("Press Any Key to Start")
             self.screen.blit(text, text_rect)
         
-        elif self.death_count > 0:
-            score, score_rect = self.text_utils.get_centered_message('Your Score: ' + str(self.points), height=half_screen_height +50)
-            death, deaht_rect = self.text_utils.get_centered_message('Death count: ' + str(self.death_count), height=half_screen_height +100)
+        elif self.death_count > 2:
+            score, score_rect = self.text_utils.get_botton_message('Your Score: ' + str(self.points))
 
             self.screen.blit(score, score_rect)
-            self.screen.blit(death, deaht_rect)  
-        self.screen.blit(DRAGON_MENU[0], (half_screen_width - 400, half_screen_height - 300))
-        self.screen.blit(DRAGON_MENU[1], (half_screen_width - 550, half_screen_height + 100))
-        self.screen.blit(DRAGON_MENU[2], (half_screen_width + 200, half_screen_height + 50))
+             
+        
+        
 
     def handle_key_event_on_menu(self):
         for event in pygame.event.get():
@@ -166,5 +195,8 @@ class Game:
             self.screen.fill((25, 25, 25))
         if self.points >= 520:
             self.screen.fill((0,0,0))
+
+    def get_life_number(self):
+        return self.life - self.death_count
         
 

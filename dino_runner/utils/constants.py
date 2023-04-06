@@ -80,6 +80,8 @@ CLOUD = pygame.image.load(os.path.join(IMG_DIR, 'Other/Cloud.png'))
 SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield.png'))
 HAMMER = pygame.image.load(os.path.join(IMG_DIR, 'Other/hammer.png'))
 CLOUD_D = pygame.image.load(os.path.join(IMG_DIR, 'Other/nubevoladora.png'))
+LIFE = pygame.image.load(os.path.join(IMG_DIR, 'Other/vida.png'))
+SEMILLA = pygame.image.load(os.path.join(IMG_DIR, 'Other/semilla.png'))
 
 BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
 
@@ -103,7 +105,11 @@ COLORS = {
     'Golden': (218, 165, 32)
 }
 
-DRAGON_MENU = [pygame.image.load(os.path.join(IMG_DIR, 'Other/IntroMenuDragonBall.png')),
+DRAGON_MENU = [pygame.image.load(os.path.join(IMG_DIR, 'Other/dino_ball_bg.png')),
                pygame.image.load(os.path.join(IMG_DIR, 'Other/gokuchildren.png')),
                pygame.image.load(os.path.join(IMG_DIR, 'Other/dinosaurmenu.png'))
                ]
+
+ESFERA_1 = pygame.image.load(os.path.join(IMG_DIR, 'Other/esfera1.png'))
+ESFERA_2 = pygame.image.load(os.path.join(IMG_DIR, 'Other/esfera2.png'))
+ESFERA_3 = pygame.image.load(os.path.join(IMG_DIR, 'Other/esfera3.png'))

@@ -31,15 +31,23 @@ class PowerUpManager:
         for power_up in self.power_ups:
             power_up.update(game_speed, self.power_ups)
             if player.rect.colliderect(power_up.rect):
-                power_up.start_time = pygame.time.get_ticks ()
-                player.shield = True
-                player.show_text = True
-                player.type = power_up.type
-                power_up.start_time = pygame.time.get_ticks()
-                time_random = random.randrange(5, 8)
-                player.shield_time_up = power_up.start_time + (time_random * 1000)
-                self.power_ups.remove(power_up)
+                self.start_power_up(player, power_up)
 
     def draw(self, screen):
         for power_up in self.power_ups:
             power_up.draw(screen)
+
+    def start_power_up(self, player, power_up):
+        power_up.start_time = pygame.time.get_ticks ()
+        player.shield = True
+        player.show_text = True
+        player.type = power_up.type
+        power_up.start_time = pygame.time.get_ticks()
+        time_random = random.randrange(5, 8)
+        player.shield_time_up = power_up.start_time + (time_random * 1000)
+        self.power_ups.remove(power_up)
+
+    def start_default_powerup(self, player):
+        power_up = Shield()
+        self.power_ups.append(power_up)
+        self.start_power_up(player, power_up)

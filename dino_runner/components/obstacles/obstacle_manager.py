@@ -1,6 +1,7 @@
 from dino_runner.components.obstacles.cactus import Cactus
 from dino_runner.components.bird_obstacles.bird import Bird
 from dino_runner.components.obstacles.patada import Frezer
+from dino_runner.components.powerups.shield import Shield
 from dino_runner.utils.constants import SMALL_CACTUS, BIRD, LARGE_CACTUS, FREZER
 import pygame
 import random
@@ -36,8 +37,11 @@ class ObstacleManager:
                     pygame.mixer.music.load("dino_runner/assets/music/gokuuu.mp3")
                     pygame.mixer.music.play()
                     pygame.time.delay(2000)
-                    game.playing = False
                     game.death_count +=1
+                    if game.death_count >= game.life:
+                        game.playing = False
+                    game.powerup_manager.start_default_powerup(game.player)
+                    print(game.death_count)
                     break
 
     def draw(self, screen):

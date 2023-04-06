@@ -1,7 +1,5 @@
 from pygame.sprite import Sprite
 from dino_runner.utils.constants import  (
-    COLORS,
-    FONT_STYLE,
     RUNNING, 
     JUMPING_D, 
     DUCKING_N,
@@ -33,6 +31,7 @@ class Dinosaur(Sprite):
         self.ducking = False
         self.jumping = False
         self.jump_vel = self.JUMP_VEL
+        self.lifes = 3
         self.setup_state_variables()
         
 
@@ -113,8 +112,11 @@ class Dinosaur(Sprite):
         if self.type == current_type:
             self.type = DEFAULT_TYPE
 
-    def life(self):
+    def life(self, screen):
         pass
+        
+        
+        
 
 
 
