@@ -204,6 +204,29 @@ class Game:
             self.screen.fill((0,0,0))
         if self.points >= 1500:
             self.screen.fill((255,255,255))
+        if self.points >= 2000:
+            self.screen.fill((225,225,225))
+        if self.points >= 2002:
+            self.screen.fill((200,200,200))
+        if self.points >= 2004:
+            self.screen.fill((181,178,178))
+        if self.points >= 2006:
+            self.screen.fill((150, 150, 150))
+        if self.points >= 2008:
+            self.screen.fill((125, 125, 125))
+        if self.points >= 2010:
+            self.screen.fill((100, 100, 100))
+        if self.points >= 2012:
+            self.screen.fill((75, 75, 75))
+        if self.points >= 2014:
+            self.screen.fill((50, 50, 50))
+        if self.points >= 2016:
+            self.screen.fill((25, 25, 25))
+        if self.points >= 2020:
+            self.screen.fill((0,0,0))
+        if self.points >= 2500:
+            self.screen.fill((255,255,255))
+        
         
 
     def get_life_number(self):

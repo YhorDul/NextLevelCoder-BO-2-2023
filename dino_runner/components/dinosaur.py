@@ -50,8 +50,6 @@ class Dinosaur(Sprite):
         self.step_index += 1
 
     def duck(self):
-        """pygame.mixer.music.load("dino_runner/assets/music/agacharse.mp3")
-        pygame.mixer.music.play()"""
         self.image = self.duck_img[self.type][self.step_index //5]
         self.rect = self.image.get_rect()
         self.rect.x = self.POS_X
@@ -59,8 +57,6 @@ class Dinosaur(Sprite):
         self.step_index += 1
 
     def jump(self):
-        """pygame.mixer.music.load("dino_runner/assets/music/SaltoMario.mp3")
-        pygame.mixer.music.play()"""
         self.image = self.jump_img[self.type]
         if self.jumping:
             self.rect.y -= self.jump_vel * 4          
