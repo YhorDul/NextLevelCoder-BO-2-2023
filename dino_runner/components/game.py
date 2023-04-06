@@ -48,9 +48,6 @@ class Game:
 
     def run(self):
         # Game loop: events - update - draw
-        pygame.mixer.music.load("dino_runner/assets/music/Menuporta.mp3")
-        pygame.mixer.music.play(-1)
-        pygame.mixer.music.set_volume(0.5)
         self.powerup_manager.reset_power_ups(self.points)
         self.playing = True
         while self.playing:

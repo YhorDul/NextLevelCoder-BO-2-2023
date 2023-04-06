@@ -36,7 +36,10 @@ class ObstacleManager:
                 if not game.player.shield:
                     pygame.mixer.music.load("dino_runner/assets/music/gokuuu.mp3")
                     pygame.mixer.music.play()
-                    pygame.time.delay(2000)
+                    pygame.time.delay(3000)
+                    pygame.mixer.music.load("dino_runner/assets/music/Menuporta.mp3")
+                    pygame.mixer.music.play(-1)
+                    pygame.mixer.music.set_volume(0.5)
                     game.death_count +=1
                     if game.death_count >= game.life:
                         game.playing = False
