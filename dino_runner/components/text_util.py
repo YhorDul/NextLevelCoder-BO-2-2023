@@ -16,5 +16,13 @@ class TextUtils:
         text_rect = text.get_rect()
         text_rect.center = (width, height)
         return text, text_rect
+    
+    def get_time_powerup(self, time_to_show):
+        font = pygame.font.Font(FONT_STYLE, 15) 
+        text = font.render('Time power up: '+ str(time_to_show), True, COLORS['Blue']) 
+        text_rect = text.get_rect()
+        text_rect.center = (100,50)
+        return text, text_rect
+        
         
 

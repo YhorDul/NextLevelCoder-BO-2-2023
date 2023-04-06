@@ -32,14 +32,13 @@ class ObstacleManager:
         for obstacle in self.obstacles:
             obstacle.update(game.game_speed, self.obstacles)
             if game.player.rect.colliderect(obstacle.rect):
-                
-                if game.playing == True:
-                    game.death_count +=1
+                if not game.player.shield:
                     pygame.mixer.music.load("dino_runner/assets/music/gokuuu.mp3")
                     pygame.mixer.music.play()
-                    pygame.time.delay(3000)
-                game.playing = False
-                break
+                    pygame.time.delay(2000)
+                    game.playing = False
+                    game.death_count +=1
+                    break
 
     def draw(self, screen):
         for obstacle in self.obstacles:
