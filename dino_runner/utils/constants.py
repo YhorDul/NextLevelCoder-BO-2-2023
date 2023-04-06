@@ -110,6 +110,8 @@ DRAGON_MENU = [pygame.image.load(os.path.join(IMG_DIR, 'Other/dino_ball_bg.png')
                pygame.image.load(os.path.join(IMG_DIR, 'Other/dinosaurmenu.png'))
                ]
 
+SHENG_LONG = pygame.image.load(os.path.join(IMG_DIR, 'Other/shenlongscreen.png'))
+
 ESFERA_1 = pygame.image.load(os.path.join(IMG_DIR, 'Other/esfera1.png'))
 ESFERA_2 = pygame.image.load(os.path.join(IMG_DIR, 'Other/esfera2.png'))
 ESFERA_3 = pygame.image.load(os.path.join(IMG_DIR, 'Other/esfera3.png'))

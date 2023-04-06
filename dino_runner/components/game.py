@@ -1,7 +1,7 @@
 import pygame
 from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
 from dino_runner.components.powerups.power_up_manager import PowerUpManager
-from dino_runner.utils.constants import BG, CLOUD_D, ESFERA_1, ESFERA_2, ESFERA_3, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, CLOUD, COLORS, RUNNING, DRAGON_MENU, FONT_STYLE
+from dino_runner.utils.constants import BG, CLOUD_D, ESFERA_1, ESFERA_2, ESFERA_3, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, SHENG_LONG, TITLE, FPS, CLOUD, COLORS, RUNNING, DRAGON_MENU, FONT_STYLE
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.text_util import TextUtils
 import random
@@ -32,6 +32,9 @@ class Game:
         self.x_pos_esfera1 = 10
         self.x_pos_esfera2 = 60
         self.x_pos_esfera3 = 110
+        self.y_pos_sheng = 30
+        self.x_pos_sheng = 500
+
         self.life = 3
         self.powerup_manager = PowerUpManager()
         pygame.mixer.music.load("dino_runner/assets/music/Menuporta.mp3")
@@ -122,6 +125,13 @@ class Game:
                 self.screen.blit(ESFERA_3, (esfer_3 + self.x_pos_esfera3, self.y_pos_esfera))
                 self.x_pos_esfera3 = image_width
 
+        if self.points >= 3000:
+            sheng_long = SHENG_LONG.get_width()
+            self.screen.blit(SHENG_LONG, (sheng_long + self.x_pos_sheng, self.y_pos_sheng))
+            if self.x_pos_sheng <= -image_width:
+                self.screen.blit(SHENG_LONG, (sheng_long + self.x_pos_sheng, self.y_pos_sheng))
+                self.x_pos_sheng = image_width
+
     def score(self):
         self.points += 1
         text, text_rect = self.text_utils.get_score_element(self.points)
@@ -172,28 +182,32 @@ class Game:
     def color_screen(self):
         if self.points >= 0:
             self.screen.fill((255,255,255))
-        if self.points >= 500:
+        if self.points >= 1000:
             self.screen.fill((225,225,225))
-        if self.points >= 502:
+        if self.points >= 1002:
             self.screen.fill((200,200,200))
-        if self.points >= 504:
+        if self.points >= 1004:
             self.screen.fill((181,178,178))
-        if self.points >= 506:
+        if self.points >= 1006:
             self.screen.fill((150, 150, 150))
-        if self.points >= 508:
+        if self.points >= 1008:
             self.screen.fill((125, 125, 125))
-        if self.points >= 510:
+        if self.points >= 1010:
             self.screen.fill((100, 100, 100))
-        if self.points >= 512:
+        if self.points >= 1012:
             self.screen.fill((75, 75, 75))
-        if self.points >= 514:
+        if self.points >= 1014:
             self.screen.fill((50, 50, 50))
-        if self.points >= 516:
+        if self.points >= 1016:
             self.screen.fill((25, 25, 25))
-        if self.points >= 520:
+        if self.points >= 1020:
             self.screen.fill((0,0,0))
+        if self.points >= 1500:
+            self.screen.fill((255,255,255))
+        
 
     def get_life_number(self):
         return self.life - self.death_count
         
+    
 
