@@ -81,7 +81,7 @@ SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield.png'))
 HAMMER = pygame.image.load(os.path.join(IMG_DIR, 'Other/hammer.png'))
 CLOUD_D = pygame.image.load(os.path.join(IMG_DIR, 'Other/nubevoladora.png'))
 LIFE = pygame.image.load(os.path.join(IMG_DIR, 'Other/vida.png'))
-SEMILLA = pygame.image.load(os.path.join(IMG_DIR, 'Other/semilla.png'))
+SEED = pygame.image.load(os.path.join(IMG_DIR, 'Other/semilla.png'))
 
 BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
 
