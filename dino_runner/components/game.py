@@ -165,8 +165,6 @@ class Game:
 
             self.screen.blit(score, score_rect)
              
-        
-        
 
     def handle_key_event_on_menu(self):
         for event in pygame.event.get():
